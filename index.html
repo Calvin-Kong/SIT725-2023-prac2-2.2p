@@ -1,28 +1,35 @@
 <html>
-
-<head>
+  <head>
     <title>SIT725 Prac 2 - Task 2.2p</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="row">
-            <div class="col s12 center-align margin">
-                <h1>Simple Calculation</h1>
-                <form>
-                    <!-- Input Section -->
-                    <h3>
-                        1st Number:
-                        <input type="text" id="FirstNumber" style="width: 15%" /><br />
-                    </h3>
-                    <h3>
-                        2nd Number:
-                        <input type="text" id="SecondNumber" style="width: 15%" /><br />
-                    </h3>
-                    <br />
-                    <!-- Function Section -->
-                    <a class="waves-effect waves-light btn-small" onclick="multiplyBy()" Value="Multiply" style="background-color: Blue">Multiply</a
+      <div class="row">
+        <div class="col s12 center-align margin">
+          <h1>Simple Calculation</h1>
+          <form>
+            <!-- Input Section -->
+            <h3>
+              1st Number:
+              <input type="text" id="FirstNumber" style="width: 15%" /><br />
+            </h3>
+            <h3>
+              2nd Number:
+              <input type="text" id="SecondNumber" style="width: 15%" /><br />
+            </h3>
+            <br />
+            <!-- Function Section -->
+            <a
+              class="waves-effect waves-light btn-small"
+              onclick="multiplyBy()"
+              Value="Multiply"
+              style="background-color: Blue"
+              >Multiply</a
             >
             <a
               class="waves-effect waves-light btn-small"
@@ -51,27 +58,64 @@
 
           <script>
             function multiplyBy() {
-              num1 = document.getElementById("FirstNumber").value;
-              num2 = document.getElementById("SecondNumber").value;
-              document.getElementById("result").innerHTML = num1 * num2;
+              const num1 = document.getElementById("FirstNumber").value;
+              const num2 = document.getElementById("SecondNumber").value;
+              const result = num1 * num2;
+              
+
+              fetch(`/multiplyResult?result=${result}`)
+                .then((response) => response.json())
+                .then((data) => {
+                  document.getElementById("result").innerHTML = data;
+
+                  window.location.href = '/result='+data;
+                })
+                .catch((error) => console.error(error));
             }
 
             function divideBy() {
               num1 = document.getElementById("FirstNumber").value;
               num2 = document.getElementById("SecondNumber").value;
-              document.getElementById("result").innerHTML = num1 / num2;
+              result = num1 / num2;
+
+              fetch(`/divideResult?result=${result}`)
+              .then((response) => response.text())
+              .then((data) => {
+                document.getElementById("result").innerHTML = data;
+
+                  window.location.href = '/result='+data;
+              })
+              .catch((error) => console.error(error));
             }
 
             function addBy() {
               num1 = document.getElementById("FirstNumber").value;
               num2 = document.getElementById("SecondNumber").value;
-              document.getElementById("result").innerHTML = parseInt(num1) + parseInt(num2);
+              result = parseInt(num1) + parseInt(num2);
+
+              fetch(`/sumResult?result=${result}`)
+              .then((response) => response.text())
+              .then((data) => {
+                document.getElementById("result").innerHTML = data;
+
+                  window.location.href = '/result='+data;
+              })
+              .catch((error) => console.error(error));
             }
 
             function subtractBy() {
               num1 = document.getElementById("FirstNumber").value;
               num2 = document.getElementById("SecondNumber").value;
-              document.getElementById("result").innerHTML = num1 - num2;
+              result = num1 - num2;
+
+              fetch(`/subtractResult?result=${result}`)
+              .then((response) => response.text())
+              .then((data) => {
+                document.getElementById("result").innerHTML = data;
+
+                  window.location.href = '/result='+data;
+              })
+              .catch((error) => console.error(error));
             }
           </script>
         </div>

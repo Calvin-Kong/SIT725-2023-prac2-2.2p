@@ -1,14 +1,24 @@
 {
   "name": "sit725-2023-prac2-2.2p",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Calvin-Kong/SIT725-2023-prac2-2.2p.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Calvin-Kong/SIT725-2023-prac2-2.2p/issues"
+  },
+  "homepage": "https://github.com/Calvin-Kong/SIT725-2023-prac2-2.2p#readme",
+  "description": ""
 }
