@@ -26,10 +26,11 @@ app.get("/divideResult", (req, res) => {
 });
 
 app.get("/sumResult", (req, res) => {
-  let result = req.query.result;
-
+  let num1 = req.query.n1;
+  let num2 = req.query.n2;
+  let result = parseInt(num1) + parseInt(num2);
   console.log("Result is", result);
-  res.send(result);
+  res.send({result:result});
   // print out result in server page
 });
 
